@@ -10,8 +10,17 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
-
+#include <stdio.h>
+int main() {
+    float length = 5.0, width = 3.0;
+    float *ptr_length = &length, *ptr_width = &width;
+    float area;
+    area = (*ptr_length) * (*ptr_width);
+    printf("The area of the rectangle is: %.2f\n", area);
+ return 0;
+}
 ## OUTPUT
+![Screenshot 2025-04-28 203105](https://github.com/user-attachments/assets/821ccbdf-5190-4a9d-ad37-bfd0bd328279)
 		       	
 
 
@@ -34,9 +43,25 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+#include <stdlib.h>
 
+int main() {
+    char *str;
+    str = (char *)malloc(8 * sizeof(char));
+if (str == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+    sprintf(str, "WELCOME");
+    printf("%s\n", str);
+    free(str);
+
+return 0;
+}
 ## OUTPUT
 
+![Screenshot 2025-04-28 203240](https://github.com/user-attachments/assets/a17af464-5a81-450d-a695-a503f88cf2e2)
 
 
 ## RESULT
@@ -60,9 +85,32 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
 
+struct student {
+    char name[50];
+    int roll_no;
+    float marks;
+};
+
+int main() {
+    struct student s;
+    printf("Enter student name: ");
+    scanf("%s", s.name);
+    printf("Enter roll number: ");
+    scanf("%d", &s.roll_no);
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+    printf("\nStudent Information:\n");
+    printf("Name: %s\n", s.name);
+    printf("Roll Number: %d\n", s.roll_no);
+    printf("Marks: %.2f\n", s.marks);
+
+    return 0;
+}
 
 ## OUTPUT
+![Screenshot 2025-04-28 203342](https://github.com/user-attachments/assets/b5c3d8c4-c412-4946-9d6c-7c406c66dfaf)
 
 
 ## RESULT
@@ -87,9 +135,38 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
 
+struct employee {
+    char name[50];
+    int id;
+    float basic_salary;
+    float gross_salary;
+};
+
+int main() {
+    struct employee emp[3];
+    for (int i = 0; i < 3; i++) {
+        printf("\nEnter details for Employee %d\n", i + 1);
+        printf("Enter name: ");
+        scanf("%s", emp[i].name);
+        printf("Enter ID: ");
+        scanf("%d", &emp[i].id);
+        printf("Enter basic salary: ");
+        scanf("%f", &emp[i].basic_salary);
+        emp[i].gross_salary = emp[i].basic_salary + (emp[i].basic_salary * 0.20);  // 20% increment
+        printf("\nEmployee %d Details:\n", i + 1);
+        printf("Name: %s\n", emp[i].name);
+        printf("ID: %d\n", emp[i].id);
+        printf("Basic Salary: %.2f\n", emp[i].basic_salary);
+        printf("Gross Salary: %.2f\n", emp[i].gross_salary);
+    }
+
+  return 0;
+}
 
  ## OUTPUT
+![Screenshot 2025-04-28 203616](https://github.com/user-attachments/assets/7a0fb4a6-d463-4ea9-91d8-cbfa971fb5f6)
 
  
 
@@ -134,9 +211,42 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+#include <stdio.h>
 
+struct student {
+    char name[10];
+    int rollno;
+    int subject[5];
+    int total;
+    float average;
+};
+
+int main() {
+    struct student s[2] = {
+        {"John", 101, {80, 85, 90, 70, 88}, 0, 0.0},
+        {"Alice", 102, {75, 80, 65, 95, 90}, 0, 0.0}
+    };
+    for (int i = 0; i < 2; i++) {
+        s[i].total = 0;
+        for (int j = 0; j < 5; j++) {
+            s[i].total += s[i].subject[j];
+        }
+        s[i].average = s[i].total / 5.0;
+    }
+    printf("\nTotal and Average Marks for Each Student:\n");
+    for (int i = 0; i < 2; i++) {
+        printf("\nStudent %d:\n", i + 1);
+        printf("Name: %s\n", s[i].name);
+        printf("Roll No: %d\n", s[i].rollno);
+        printf("Total Marks: %d\n", s[i].total);
+        printf("Average Marks: %.2f\n", s[i].average);
+    }
+
+ return 0;
+}
 
 ## OUTPUT
+![Screenshot 2025-04-28 203817](https://github.com/user-attachments/assets/6bd7d587-227a-4bf9-bfe2-d44030c8ad94)
 
  
 
